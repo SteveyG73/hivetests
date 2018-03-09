@@ -65,7 +65,7 @@ public class HiveStatementTest {
         int expected = 1;
         shell.execute(Paths.get("src/test/resources/create_simple_table.hql"));
         shell.insertInto("unit_testing","sg_basic_text_table")
-                .addRow(1,"row1","The first row")
+                .addRow(1,"row1","The first row","2018-01-01 00:00:00.000")
                 .commit();
         List<String> actual = shell.executeQuery("SELECT * FROM ${hiveconf:database}.sg_basic_text_table");
         Assert.assertEquals(expected,actual.size());
